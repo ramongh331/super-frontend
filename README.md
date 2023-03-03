@@ -1,38 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Super - Frontend
 
-## Getting Started
+## Description:
 
-First, run the development server:
+Are you tired of dating mundane humans and craving a more extraordinary dating experience? Look no further than Super, the ultimate dating site for super beings like yourself!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+With Super, you can fully embrace your super identity and search for your forever partner while roleplaying as the super being of your dreams. Customize your Super profile with details about your Super Being Name, abilities, backstory, and more to attract your ideal match.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Discover and connect with other extraordinary beings from all corners of the universe. Whether you're a cosmic being with god-like powers or a mutant with incredible abilities, Super has it all.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Join Super today and find your Super Match – the one who truly understands and accepts you for who you are. Sign up now and experience the ultimate dating adventure for super beings! 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Problem to be Addressed
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+In my online dating journey, I've found that expressing my love for all things super being related can often turn off potential matches. However, being a super hero and villain nerd is a fundamental aspect of my identity. That's why I had the idea to create a dating site where those who share this passion can embrace their true selves.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+On this site, you can let your imagination run wild and fully embody any super being you've ever dreamed of being. Whether you want to be a Superman doppelganger or a Pink Alien with the ability to breathe fire out of its ears, the possibilities are endless.
 
-## Learn More
+Here, you won't be judged for your interests and you can openly embrace your inner super being. So, why not join this unique community and find your perfect match among like-minded individuals? Start your roleplaying journey today and find your soulmate!
 
-To learn more about Next.js, take a look at the following resources:
+## Audience
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Anyone who is trying to find their match and into super beings.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Technologies To Be Used
 
-## Deploy on Vercel
+- NEXT.JS
+- TAILWIND CSS
+- JAVASCRIPT
+- NODE.JS
+- NEXT-AUTH
+- GOOGLE PROVIDER
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Components Architecture
+![Architecture](https://i.imgur.com/5lPBTc8.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## The Route Table
+| Route | Element | Loader | Action | Summary |
+|-------|---------|--------|--------|---------|
+| / | Home |  | | Home page will advertise the dating experience |
+| /signin | Sign In |  | | user will sign in with a google email |
+| /matches | Matches | indexLoader |  | returns all profiles (all members have access to this page) |
+| /profile/:email | Show | showLoader |  | returns single profile (all members have access to this page) |
+| /profile/:email/edit | Edit | showLoader |  | edit your profile (only you can edit your own profile) |
+| /profile/create |  | | CreateAction | create a profile  |
+| /profile/update/:email |  | | UpdateAction | update a profile |
+| /profile/delete/:email |  | | CeleteAction | delete a profile |
+
+
+## Trello Board
+
+[TRELLO BOARD](https://trello.com/invite/b/dwLOa8hT/ATTIb588581c769ac71e5a0580f74034459eFAFDAAE7/super-dating-app)
+
+## Wire Frames
+
+### Desktop:
+
+![Home]()
+![Create]()
+![Index]()
+
+### Mobile
+
+![Mobile Designs](https://i.imgur.com/w5eraBf.png)
+
+## Link to Project
+
+[Live Page](https://super-app-nine.vercel.app/)
