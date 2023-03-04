@@ -55,13 +55,12 @@ Anyone who is trying to find their match and into super beings.
 
 ### Desktop:
 
-![Home]()
-![Create]()
-![Index]()
+![Home](https://i.imgur.com/cXvJHdf.png)
+![Profile](https://i.imgur.com/VCdx6jd.png)
 
 ### Mobile
 
-![Mobile Designs](https://i.imgur.com/w5eraBf.png)
+![Mobile Designs](https://i.imgur.com/8IlXKJ0.png)
 
 ## Link to Project
 
