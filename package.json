@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next-auth/mongodb-adapter": "^0.0.2-next.298",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
     "mongodb": "^5.1.0",
