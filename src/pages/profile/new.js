@@ -1,7 +1,33 @@
 import Head from 'next/head'
+import { signOut, signIn, getSession } from "next-auth/react";
+import { useRouter } from 'next/router';
+// import { MongoClient } from "mongodb";
 
-export default function New() {
-  return (
+export async function getServerSideProps(context){
+  const session = await getSession(context)
+  
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+
+return {
+    props: {
+      session
+    }
+  }
+}
+
+export default function New({session}) {
+  
+
+  if(session){
+    return (
     <>
       <Head>
         <title>Create Next App</title>
@@ -10,8 +36,20 @@ export default function New() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <button onClick={() => signOut()}>Sign Out</button>
         <h2>New Profile Page</h2>
+        <p>{session.user.name}</p>
+        <p>{session.user.email}</p>
       </main>
     </>
   )
+  } else {
+    return (
+      <>
+        <h2>You are not signed in</h2>
+        <button onClick={() => signIn()}>Sign In</button>
+      </>
+    );
+  }
+  
 }
