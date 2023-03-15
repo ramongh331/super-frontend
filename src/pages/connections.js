@@ -1,3 +1,4 @@
+import Card from '@/components/super-card'
 import Head from 'next/head'
 
 export default function Connections() {
@@ -10,6 +11,7 @@ export default function Connections() {
       </Head>
       <main>
         <h2>Connections/Super Matches Page</h2>
+        <Card/>
       </main>
     </>
   )
