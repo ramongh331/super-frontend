@@ -20,7 +20,6 @@ if(session){
         <h3>Profile Info</h3>
         <p>Signed in as: {session.user.name}</p>
         <p>Email: {session.user.email}</p>
-        <Link href="/profile/new">New Page</Link>
       </main>
     </>
   )
@@ -36,7 +35,6 @@ if(session){
       <main>
         <h2>Home Page</h2>
         <button onClick={() => signIn()}>Sign In</button>
-        <Link href="/profile/new">New Page</Link>
       </main>
     </>
   )

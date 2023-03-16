@@ -130,7 +130,7 @@ export default function Edit({user, profileData}) {
               <label>Affiliation:</label>
               <select className="border-solid border-2 border-black" name="tpi" defaultValue={profileData.tpi}>
                 <option value="" disabled hidden>Team/Partner/Indie</option>
-                <option value="Team">I'm on a team</option>
+                <option value="Team">I&#39;m on a team</option>
                 <option value="Partner">I have a partner</option>
                 <option value="Indie">I work independently</option>
               </select>
