@@ -1,9 +1,48 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import Head from "next/head";
+import { signOut, signIn, getSession } from "next-auth/react";
+import { MongoClient } from "mongodb";
 
-export default function View() {
-  const router = useRouter()
-  const {pid} = router.query
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+  
+  const pid = context.query.userId
+  const userEmail = session.user.email;
+
+  // CONNECT TO MONGODB DATABASE
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const db = client.db(process.env.MONGODB_DB);
+
+  // QUERY FOR SPECIFIC DATA
+  const user = db.collection("users").findOne({_id: pid});
+  const profileData = await db.collection("profile").findOne({ userEmail });
+
+  client.close();
+
+  // SERIALIZE DATA AND TURN IT INTO JSON
+  const serializedUser = JSON.parse(JSON.stringify(user));
+  const serializedData = JSON.parse(JSON.stringify(profileData));
+
+  // ADD TO PROPS OBJECT TO EXTRACT AS PROPS IN THE PAGE JSX
+  return {
+    props: {
+      user: serializedUser,
+      profileData: serializedData,
+    }
+  }
+
+}
+
+export default function View({ user, profileData}) {
+
   
     return (
     <>
@@ -13,7 +52,25 @@ export default function View() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <h2>View Profile Page of {pid}</h2>
+        <h2>View Profile Page of </h2>
+        <h2>Identity</h2>
+        <p>Super Name: {profileData.sname}</p>
+        <p>Real Name: {profileData.rname}</p>
+        <p>Age: {profileData.age}</p>
+        <p>Location: {profileData.location}</p>
+        <p>Species: {profileData.species}</p>
+        <p>Gender: {profileData.gender}</p>
+        <p>Sexual Orientation: {profileData.sex}</p>
+        <h2>Attributes</h2>
+        <p>Abilities: {profileData.ability}</p>
+        <p>Side: {profileData.hva}</p>
+        <p>Affiliation: {profileData.tpi}</p>
+        <h2>Bio</h2>
+        <p>Backstory: {profileData.story}</p>
+        
+        
+
+        
       </main>
     </>
   )

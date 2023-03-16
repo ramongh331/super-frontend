@@ -1,9 +1,49 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import { signOut, signIn, getSession } from "next-auth/react";
+import { MongoClient } from "mongodb";
 
-export default function Edit() {
-  const router = useRouter()
-  const {pid} = router.query
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+  
+  const pid = context.query.userId
+  const userEmail = session.user.email;
+
+  // CONNECT TO MONGODB DATABASE
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const db = client.db(process.env.MONGODB_DB);
+
+  // QUERY FOR SPECIFIC DATA
+  const user = db.collection("users").findOne({_id: pid});
+  const profileData = await db.collection("profile").findOne({ userEmail });
+
+  client.close();
+
+  // SERIALIZE DATA AND TURN IT INTO JSON
+  const serializedUser = JSON.parse(JSON.stringify(user));
+  const serializedData = JSON.parse(JSON.stringify(profileData));
+
+  // ADD TO PROPS OBJECT TO EXTRACT AS PROPS IN THE PAGE JSX
+  return {
+    props: {
+      user: serializedUser,
+      profileData: serializedData,
+    }
+  }
+
+}
+
+
+export default function Edit({user, profileData}) {
+ 
   
     return (
     <>
@@ -13,7 +53,103 @@ export default function Edit() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <h2>Edit Profile Page of {pid}</h2>
+        <h2>Edit Profile</h2>
+        <form action="/api/update-action" method="POST" className="flex flex-col">
+            <h3>Identity</h3>
+            <section>
+              <label>Super Name:</label>
+              <input className="border-solid border-2 border-black" type="text" name="sname" defaultValue={profileData.sname} />
+            </section>
+            <section>
+              <label>Real Name:</label>
+              <input className="border-solid border-2 border-black" type="text" name="rname" defaultValue={profileData.rname} />
+            </section>
+            <section>
+              <label>Age:</label>
+              <input className="border-solid border-2 border-black" type="number" min="0" name="age" defaultValue={profileData.age} />
+            </section>
+            <section>
+              <label>Species:</label>
+              <input className="border-solid border-2 border-black" type="text" name="species" defaultValue={profileData.species} />
+            </section>
+            <section>
+              <label>Gender (if human):</label>
+              <select className="border-solid border-2 border-black" name="gender" defaultValue={profileData.gender}>
+                <option value="" disabled hidden>Gender</option>
+                <option value="Agender">Agender</option>
+                <option value="Androgynous">Androgynous</option>
+                <option value="Bigender">Bigender</option>
+                <option value="Cisgender">Cisgender</option>
+                <option value="Cis Woman">Cis Woman</option>
+                <option value="Cis Man">Cis Man</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Gender Fluid">Gender Fluid</option>
+                <option value="Gender Questioning">Gender Questioning</option>
+                <option value="Transgender">Transgender</option>
+                <option value="Trans Woman">Trans Woman</option>
+                <option value="Trans Man">Trans Man</option>
+                <option value="Transgender Person">Transgender Person</option>
+                <option value="Two-Spirit">Two-Spirit</option>
+              </select>
+            </section>
+            <section>
+              <label>Sexual Orientation:</label>
+              <select className="border-solid border-2 border-black" name="sex" defaultValue={profileData.sex}>
+                <option value="" disabled hidden>Sexual Orientation</option>
+                <option value="Asexual">Asexual</option>
+                <option value="Bisexual">Bisexual</option>
+                <option value="Gay">Gay</option>
+                <option value="Lesbian">Lesbian</option>
+                <option value="Pansexual">Pansexual</option>
+                <option value="Polysexual">Polysexual</option>
+                <option value="Queer">Queer</option>
+                <option value="Questioning">Questioning</option>
+                <option value="Straight">Straight</option>
+              </select>
+            </section>
+            <section>
+              <label>Location:</label>
+              <input className="border-solid border-2 border-black" type="text" name="location" defaultValue={profileData.location} />
+            </section>
+            
+            <h3>Attributes</h3>
+            <section>
+              <label>Abilities:</label>
+              <input className="border-solid border-2 border-black" type="text" name="ability" defaultValue={profileData.ability} />
+            </section>
+            <section>
+              <label>Pick your side:</label>
+              <select className="border-solid border-2 border-black" name="hva" defaultValue={profileData.hva}>
+                <option value="" disabled hidden>Select your Side</option>
+                <option value="Hero">Hero</option>
+                <option value="Villain">Villain</option>
+                <option value="Anti-Hero">Anti-Hero</option>
+              </select>
+            </section>
+            <section>
+              <label>Affiliation:</label>
+              <select className="border-solid border-2 border-black" name="tpi" defaultValue={profileData.tpi}>
+                <option value="" disabled hidden>Team/Partner/Indie</option>
+                <option value="Team">I'm on a team</option>
+                <option value="Partner">I have a partner</option>
+                <option value="Indie">I work independently</option>
+              </select>
+            </section>
+            <h3>Bio</h3>
+            <section>
+              <label>Backstory:</label>
+              <textarea
+              className="border-solid border-2 border-black"
+                name="story"
+                rows="4"
+                cols="50"
+                maxlength="500"
+                placeholder="Born with abilities beyond imagination, I grew up in a world that could not understand them..."
+                defaultValue={profileData.story}
+              />
+            </section>
+            <button className="bg-gray-300 w-[180px]" type="submit">Update Super Profile</button>
+          </form>
       </main>
     </>
   )

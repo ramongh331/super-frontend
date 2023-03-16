@@ -37,76 +37,100 @@ export default function New({ session }) {
           <h2>New Profile Page</h2>
           <p>{session.user.name}</p>
           <p>{session.user.email}</p>
-          <form action="/api/create-action" method="POST">
+          <form action="/api/create-action" method="POST" className="flex flex-col">
             <h3>Identity</h3>
-            <label>Super Name:</label>
-            <input type="text" name="sname" placeholder="Super Name" />
-            <label>Real Name:</label>
-            <input type="text" name="rname" placeholder="Real Name" />
-            <label>Age:</label>
-            <input type="number" min="0" name="age" placeholder="Age" />
-            <label>Species:</label>
-            <input type="text" name="species" placeholder="Species" />
-            <label>Gender (if human):</label>
-            <select name="gender">
-              <option value="" selected disabled hidden>Gender</option>
-              <option value="Agender">Agender</option>
-              <option value="Androgynous">Androgynous</option>
-              <option value="Bigender">Bigender</option>
-              <option value="Cisgender">Cisgender</option>
-              <option value="Cis Woman">Cis Woman</option>
-              <option value="Cis Man">Cis Man</option>
-              <option value="Non-binary">Non-binary</option>
-              <option value="Gender Fluid">Gender Fluid</option>
-              <option value="Gender Questioning">Gender Questioning</option>
-              <option value="Transgender">Transgender</option>
-              <option value="Trans Woman">Trans Woman</option>
-              <option value="Trans Man">Trans Man</option>
-              <option value="Transgender Person">Transgender Person</option>
-              <option value="Two-Spirit">Two-Spirit</option>
-            </select>
-            <label>Sexuality:</label>
-            <select name="sex">
-              <option value="" selected disabled hidden>Sexual Orientation</option>
-              <option value="Asexual">Asexual</option>
-              <option value="Bisexual">Bisexual</option>
-              <option value="Gay">Gay</option>
-              <option value="Lesbian">Lesbian</option>
-              <option value="Pansexual">Pansexual</option>
-              <option value="Polysexual">Polysexual</option>
-              <option value="Queer">Queer</option>
-              <option value="Questioning">Questioning</option>
-              <option value="Straight">Straight</option>
-            </select>
-            <input type="text" name="location" placeholder="Location" />
+            <section>
+              <label>Super Name:</label>
+              <input className="border-solid border-2 border-black" type="text" name="sname" placeholder="Super Name" />
+            </section>
+            <section>
+              <label>Real Name:</label>
+              <input className="border-solid border-2 border-black" type="text" name="rname" placeholder="Real Name" />
+            </section>
+            <section>
+              <label>Age:</label>
+              <input className="border-solid border-2 border-black" type="number" min="0" name="age" placeholder="Age" />
+            </section>
+            <section>
+              <label>Species:</label>
+              <input className="border-solid border-2 border-black" type="text" name="species" placeholder="Species" />
+            </section>
+            <section>
+              <label>Gender (if human):</label>
+              <select className="border-solid border-2 border-black" name="gender">
+                <option value="" selected disabled hidden>Gender</option>
+                <option value="Agender">Agender</option>
+                <option value="Androgynous">Androgynous</option>
+                <option value="Bigender">Bigender</option>
+                <option value="Cisgender">Cisgender</option>
+                <option value="Cis Woman">Cis Woman</option>
+                <option value="Cis Man">Cis Man</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Gender Fluid">Gender Fluid</option>
+                <option value="Gender Questioning">Gender Questioning</option>
+                <option value="Transgender">Transgender</option>
+                <option value="Trans Woman">Trans Woman</option>
+                <option value="Trans Man">Trans Man</option>
+                <option value="Transgender Person">Transgender Person</option>
+                <option value="Two-Spirit">Two-Spirit</option>
+              </select>
+            </section>
+            <section>
+              <label>Sexual Orientation:</label>
+              <select className="border-solid border-2 border-black" name="sex">
+                <option value="" selected disabled hidden>Sexual Orientation</option>
+                <option value="Asexual">Asexual</option>
+                <option value="Bisexual">Bisexual</option>
+                <option value="Gay">Gay</option>
+                <option value="Lesbian">Lesbian</option>
+                <option value="Pansexual">Pansexual</option>
+                <option value="Polysexual">Polysexual</option>
+                <option value="Queer">Queer</option>
+                <option value="Questioning">Questioning</option>
+                <option value="Straight">Straight</option>
+              </select>
+            </section>
+            <section>
+              <label>Location:</label>
+              <input className="border-solid border-2 border-black" type="text" name="location" placeholder="Location" />
+            </section>
             
             <h3>Attributes</h3>
-            <label>Abilities:</label>
-            <input type="text" name="ability" placeholder="Abilities" />
-            <label>Pick your side:</label>
-            <select name="hva">
-              <option value="" selected disabled hidden>Select your Side</option>
-              <option value="Hero">Hero</option>
-              <option value="Villain">Villain</option>
-              <option value="Anti-Hero">Anti-Hero</option>
-            </select>
-            <label>Affiliation:</label>
-            <select name="tpi">
-              <option value="" selected disabled hidden>Team/Partner/Indie</option>
-              <option value="Team">I'm on a team</option>
-              <option value="Partner">I have a partner</option>
-              <option value="Indie">I work independently</option>
-            </select>
+            <section>
+              <label>Abilities:</label>
+              <input className="border-solid border-2 border-black" type="text" name="ability" placeholder="Abilities" />
+            </section>
+            <section>
+              <label>Pick your side:</label>
+              <select className="border-solid border-2 border-black" name="hva">
+                <option value="" selected disabled hidden>Select your Side</option>
+                <option value="Hero">Hero</option>
+                <option value="Villain">Villain</option>
+                <option value="Anti-Hero">Anti-Hero</option>
+              </select>
+            </section>
+            <section>
+              <label>Affiliation:</label>
+              <select className="border-solid border-2 border-black" name="tpi">
+                <option value="" selected disabled hidden>Team/Partner/Indie</option>
+                <option value="Team">I'm on a team</option>
+                <option value="Partner">I have a partner</option>
+                <option value="Indie">I work independently</option>
+              </select>
+            </section>
             <h3>Bio</h3>
-            <label>Backstory:</label>
-            <textarea
-              name="story"
-              rows="4"
-              cols="50"
-              maxlength="500"
-              placeholder="Born with abilities beyond imagination, I grew up in a world that could not understand them..."
-            />
-            <button type="submit">Create Super Profile</button>
+            <section>
+              <label>Backstory:</label>
+              <textarea
+              className="border-solid border-2 border-black"
+                name="story"
+                rows="4"
+                cols="50"
+                maxlength="500"
+                placeholder="Born with abilities beyond imagination, I grew up in a world that could not understand them..."
+              />
+            </section>
+            <button className="bg-gray-300 w-[180px]" type="submit">Create Super Profile</button>
           </form>
         </main>
       </>
