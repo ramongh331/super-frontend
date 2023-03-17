@@ -1,4 +1,3 @@
-import Card from '@/components/super-card'
 import Head from 'next/head'
 import { MongoClient } from "mongodb";
 import { getSession } from "next-auth/react";
