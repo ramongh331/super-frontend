@@ -40,7 +40,7 @@ export default function Connections({profiles}) {
         <h2>Connections/Super Matches Page</h2>
        <section className="flex">
          {profiles.map((profile) => (
-          <section className="bg-blue-200 w-60 h-60 text-2xl mx-2">
+          <section key={profile._id} className="bg-blue-200 w-60 h-60 text-2xl mx-2">
           <h3>{profile.sname}</h3>
           <h4>{profile.rname}</h4>
           <p>{profile.age}</p>
