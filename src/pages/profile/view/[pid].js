@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { signOut, signIn, getSession } from "next-auth/react";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
     }
   }
   
-  const pid = context.query.userId
+  const pID = context.query.pid
   const userEmail = session.user.email;
 
   // CONNECT TO MONGODB DATABASE
@@ -22,26 +22,24 @@ export async function getServerSideProps(context) {
   const db = client.db(process.env.MONGODB_DB);
 
   // QUERY FOR SPECIFIC DATA
-  const user = db.collection("users").findOne({_id: pid});
-  const profileData = await db.collection("profile").findOne({ userEmail });
+  const profileData = await db.collection("profile").findOne({_id: new ObjectId(pID) });
 
   client.close();
 
   // SERIALIZE DATA AND TURN IT INTO JSON
-  const serializedUser = JSON.parse(JSON.stringify(user));
   const serializedData = JSON.parse(JSON.stringify(profileData));
+  console.log(serializedData)
 
   // ADD TO PROPS OBJECT TO EXTRACT AS PROPS IN THE PAGE JSX
   return {
     props: {
-      user: serializedUser,
       profileData: serializedData,
     }
   }
 
 }
 
-export default function View({ user, profileData}) {
+export default function View({ profileData}) {
 
   
     return (
