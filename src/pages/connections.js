@@ -47,9 +47,9 @@ export default function Connections({ profiles }) {
           <h2>Connections/Super Matches Page</h2>
           <section className="flex">
             {profiles.map((profile) => (
-              <Link href={`/profile/view/${profile._id}`}>
+              <Link key={profile._id} href={`/profile/view/${profile._id}`}>
                 <section
-                  key={profile._id}
+                  
                   className="bg-blue-200 w-60 h-60 text-2xl mx-2"
                 >
                   <h3>{profile.sname}</h3>
