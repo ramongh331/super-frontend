@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { signOut, signIn, getSession } from "next-auth/react";
+import Link from "next/link";
+import { signOut, getSession } from "next-auth/react";
 import { MongoClient, ObjectId } from "mongodb";
 
 export async function getServerSideProps(context) {
@@ -48,7 +49,12 @@ export default function View({ profileData}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <h2>View Profile Page of </h2>
+        <button onClick={() => signOut({callbackurl: "/"})}>Sign Out</button><br/>
+        <Link href="/connections">Connections Page</Link> <br/>
+        <Link href={`/profile/edit/${profileData._id}`}>Edit Page</Link> 
+
+
+        <h2>View Profile Page of {profileData.sname}</h2>
         <h2>Identity</h2>
         <p>Super Name: {profileData.sname}</p>
         <p>Real Name: {profileData.rname}</p>

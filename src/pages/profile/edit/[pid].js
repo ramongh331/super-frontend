@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { signOut, signIn, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { MongoClient } from "mongodb";
 
 export async function getServerSideProps(context) {
@@ -28,13 +28,11 @@ export async function getServerSideProps(context) {
   client.close();
 
   // SERIALIZE DATA AND TURN IT INTO JSON
-  const serializedUser = JSON.parse(JSON.stringify(user));
   const serializedData = JSON.parse(JSON.stringify(profileData));
 
   // ADD TO PROPS OBJECT TO EXTRACT AS PROPS IN THE PAGE JSX
   return {
     props: {
-      user: serializedUser,
       profileData: serializedData,
     }
   }
@@ -42,7 +40,7 @@ export async function getServerSideProps(context) {
 }
 
 
-export default function Edit({user, profileData}) {
+export default function Edit({profileData}) {
  
   
     return (

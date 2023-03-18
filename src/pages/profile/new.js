@@ -55,8 +55,8 @@ export default function New({ session }) {
             </section>
             <section>
               <label>Gender (if human):</label>
-              <select className="border-solid border-2 border-black" name="gender">
-                <option value="" selected disabled hidden>Gender</option>
+              <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black" name="gender">
+                <option value="DEFAULT" disabled hidden>Gender</option>
                 <option value="Agender">Agender</option>
                 <option value="Androgynous">Androgynous</option>
                 <option value="Bigender">Bigender</option>
@@ -75,8 +75,8 @@ export default function New({ session }) {
             </section>
             <section>
               <label>Sexual Orientation:</label>
-              <select className="border-solid border-2 border-black" name="sex">
-                <option value="" selected disabled hidden>Sexual Orientation</option>
+              <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black" name="sex">
+                <option value="DEFAULT" disabled hidden>Sexual Orientation</option>
                 <option value="Asexual">Asexual</option>
                 <option value="Bisexual">Bisexual</option>
                 <option value="Gay">Gay</option>
@@ -100,8 +100,8 @@ export default function New({ session }) {
             </section>
             <section>
               <label>Pick your side:</label>
-              <select className="border-solid border-2 border-black" name="hva">
-                <option value="" selected disabled hidden>Select your Side</option>
+              <select  defaultValue={'DEFAULT'} className="border-solid border-2 border-black" name="hva">
+                <option value="DEFAULT" disabled hidden>Select your Side</option>
                 <option value="Hero">Hero</option>
                 <option value="Villain">Villain</option>
                 <option value="Anti-Hero">Anti-Hero</option>
@@ -109,8 +109,8 @@ export default function New({ session }) {
             </section>
             <section>
               <label>Affiliation:</label>
-              <select className="border-solid border-2 border-black" name="tpi">
-                <option value="" selected disabled hidden>Team/Partner/Indie</option>
+              <select defaultValue={'DEFAULT'}className="border-solid border-2 border-black" name="tpi">
+                <option value="DEFAULT" disabled hidden>Team/Partner/Indie</option>
                 <option value="Team">I&#39;m on a team</option>
                 <option value="Partner">I have a partner</option>
                 <option value="Indie">I work independently</option>
@@ -124,7 +124,7 @@ export default function New({ session }) {
                 name="story"
                 rows="4"
                 cols="50"
-                maxlength="500"
+                maxLength="500"
                 placeholder="Born with abilities beyond imagination, I grew up in a world that could not understand them..."
               />
             </section>
