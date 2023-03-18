@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { useSession, signIn, signOut, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signIn, signOut, getSession } from "next-auth/react";
 import { MongoClient } from "mongodb";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -18,39 +18,22 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      db,
-      session,
       profileData: serializedData,
-    }
-  }
+      session,
+    },
+  };
 }
 
-export default function Home({profileData, session, db}) {
+export default function Home({ session, profileData }) {
   const router = useRouter();
-  // const { data: session } = useSession();
-  const userEmail = session?.user?.email;
+  
 
   const handleSignIn = async () => {
-    const result = await signIn("google", { callbackUrl: `/profile/view/${profileData._id}` });
-    const startProfile = {
-      sname: 'Enter Super Name',
-      rname: 'Enter Real Name',
-      age: 0,
-      species: 'Enter Species Type',
-      gender: 'Select Gender',
-      sex: 'Select a Sexual Orientation',
-      location: 'Enter your General Location',
-      ability: 'Enter your Abilities',
-      hva: 'Select Hero, Villain, Ant-Hero',
-      tpi: 'Select an Affiliation',
-      story: 'Enter Backstory',
-    }
-
-    await db.collection("profile").insertOne({
-      startProfile,
-      userEmail,
-    });
+    // const redirectUrl = profileData ? "/connections" : "/profile/new"
+    // console.log('Redirecting to: ' + redirectUrl)
+    await signIn("google");
     
+    // console.log({profileData, session})
   };
 
   if (session) {
