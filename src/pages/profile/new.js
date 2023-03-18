@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { signOut, signIn, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
-// import { MongoClient } from "mongodb";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);

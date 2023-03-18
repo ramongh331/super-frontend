@@ -15,7 +15,6 @@ export async function getServerSideProps(context) {
   }
   
   const pID = context.query.pid
-  const userEmail = session.user.email;
 
   // CONNECT TO MONGODB DATABASE
   const client = await MongoClient.connect(process.env.MONGODB_URI);
@@ -28,7 +27,6 @@ export async function getServerSideProps(context) {
 
   // SERIALIZE DATA AND TURN IT INTO JSON
   const serializedData = JSON.parse(JSON.stringify(profileData));
-  console.log(serializedData)
 
   // ADD TO PROPS OBJECT TO EXTRACT AS PROPS IN THE PAGE JSX
   return {
@@ -65,10 +63,6 @@ export default function View({ profileData}) {
         <p>Affiliation: {profileData.tpi}</p>
         <h2>Bio</h2>
         <p>Backstory: {profileData.story}</p>
-        
-        
-
-        
       </main>
     </>
   )
