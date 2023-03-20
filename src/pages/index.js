@@ -8,15 +8,19 @@ export async function getServerSideProps(context) {
   const session = await getSession(context);
   const userEmail = session?.user?.email;
 
+  // CONNECTING TO MONGO DATABASE
   const client = await MongoClient.connect(process.env.MONGODB_URI);
   const db = client.db(process.env.MONGODB_DB);
 
+  // REFERRING TO PRFOILE COLLECTION BASED ON THE CURRENT USER'S EMAIL
   const profileData = await db.collection("profile").findOne({ userEmail });
   
   client.close();
 
+  // CONVERTING THE DATA INTO READABLE JSON
   const serializedData = JSON.parse(JSON.stringify(profileData));
 
+  // RETURNING THE DATA AS PROPS
   return {
     props: {
       profileData: serializedData,
@@ -26,8 +30,10 @@ export async function getServerSideProps(context) {
 
 export default function Home({profileData}) {
   const {data: session } = useSession()
+// THE REDIRECT URL IS SET DEPENDING ON THE CONDITION
   const [redirectUrl, setRedirectUrl ] = useState()
 
+  // I THOUGHT THIS SHOULD HAPPEN AFTER SESSION DATA IS RECEIVED BUT IT ISN'T
   useEffect(() => {
     console.log('useEffect is running')
     if (profileData?.userEmail === session?.user?.email){
