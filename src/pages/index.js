@@ -1,7 +1,8 @@
 import Head from "next/head";
-import { signIn, signOut, getSession } from "next-auth/react";
+import { signIn, signOut, getSession, useSession } from "next-auth/react";
 import { MongoClient } from "mongodb";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -11,11 +12,12 @@ export async function getServerSideProps(context) {
   const db = client.db(process.env.MONGODB_DB);
 
   const profileData = await db.collection("profile").findOne({ userEmail });
-
+  
   client.close();
 
   const serializedData = JSON.parse(JSON.stringify(profileData));
 
+  // const redirectUrl = await serializedData.userEmail === userEmail ? "/connections" : "/profile/new"
   return {
     props: {
       profileData: serializedData,
@@ -24,16 +26,21 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Home({ session, profileData }) {
+export default function Home({profileData}) {
   const router = useRouter();
-  
+  const {data: session } = useSession()
+  const [redirectUrl, setRedirectUrl ] = useState()
+
+  useEffect(() => {
+    if (profileData?.userEmail === session?.user?.email){
+      setRedirectUrl('/connections')
+    } else {
+      setRedirectUrl('/profile/new')
+    }
+  }, [session])
 
   const handleSignIn = async () => {
-    // const redirectUrl = profileData ? "/connections" : "/profile/new"
-    // console.log('Redirecting to: ' + redirectUrl)
-    await signIn("google");
-    
-    // console.log({profileData, session})
+    await signIn('google', {callbackUrl: redirectUrl}) 
   };
 
   if (session) {
