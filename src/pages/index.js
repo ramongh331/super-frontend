@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { signIn, signOut, getSession, useSession } from "next-auth/react";
 import { MongoClient } from "mongodb";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export async function getServerSideProps(context) {
+  console.log('server side props have rendered')
   const session = await getSession(context);
   const userEmail = session?.user?.email;
 
@@ -17,31 +17,27 @@ export async function getServerSideProps(context) {
 
   const serializedData = JSON.parse(JSON.stringify(profileData));
 
-  // const redirectUrl = await serializedData.userEmail === userEmail ? "/connections" : "/profile/new"
   return {
     props: {
       profileData: serializedData,
-      session,
     },
   };
 }
 
 export default function Home({profileData}) {
-  const router = useRouter();
   const {data: session } = useSession()
   const [redirectUrl, setRedirectUrl ] = useState()
 
   useEffect(() => {
+    console.log('useEffect is running')
     if (profileData?.userEmail === session?.user?.email){
       setRedirectUrl('/connections')
+      console.log('It was true')
     } else {
       setRedirectUrl('/profile/new')
+      console.log('It was false')
     }
   }, [session])
-
-  const handleSignIn = async () => {
-    await signIn('google', {callbackUrl: redirectUrl}) 
-  };
 
   if (session) {
     return (
@@ -72,7 +68,7 @@ export default function Home({profileData}) {
         </Head>
         <main>
           <h2>Home Page</h2>
-          <button onClick={handleSignIn}>Sign In</button>
+          <button onClick={() => signIn('google', {callbackUrl: redirectUrl})}>Sign In</button>
         </main>
       </>
     );
