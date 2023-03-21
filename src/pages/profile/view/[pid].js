@@ -2,9 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { signOut, getSession } from "next-auth/react";
 import { MongoClient, ObjectId } from "mongodb";
+import { useState } from "react";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+  const userEmail = session?.user?.email
   
   if (!session) {
     return {
@@ -22,25 +24,31 @@ export async function getServerSideProps(context) {
   const db = client.db(process.env.MONGODB_DB);
 
   // QUERY FOR SPECIFIC DATA
-  const profileData = await db.collection("profile").findOne({_id: new ObjectId(pID) });
+  const otherProfileData = await db.collection("profile").findOne({_id: new ObjectId(pID) });
+  const currentUserProfile = await db.collection("profile").findOne({userEmail});
 
   client.close();
 
   // SERIALIZE DATA AND TURN IT INTO JSON
-  const serializedData = JSON.parse(JSON.stringify(profileData));
+  const serializedOPData = JSON.parse(JSON.stringify(otherProfileData));
+  const serializedCUData = JSON.parse(JSON.stringify(currentUserProfile));
 
   // ADD TO PROPS OBJECT TO EXTRACT AS PROPS IN THE PAGE JSX
   return {
     props: {
-      profileData: serializedData,
+      otherProfileData: serializedOPData,
+      currentUserProfile: serializedCUData,
+      pID,
     }
   }
 
 }
 
-export default function View({ profileData}) {
 
-  
+
+export default function View({ otherProfileData, pID, currentUserProfile}) {
+  const [ownsProfile, setOwnsProfile] = useState(currentUserProfile?._id === pID ? 'visible' : 'hidden')
+
     return (
     <>
       <Head>
@@ -51,24 +59,27 @@ export default function View({ profileData}) {
       <main>
         <button onClick={() => signOut({callbackurl: "/"})}>Sign Out</button><br/>
         <Link href="/connections">Connections Page</Link> <br/>
-        <Link href={`/profile/edit/${profileData._id}`}>Edit Page</Link> 
+        <Link href={`/profile/edit/${otherProfileData._id}`}><button className={`${ownsProfile}`}>Edit Profile</button></Link> 
+        <form action="/api/delete-action" method="POST">
+          <button className={`${ownsProfile}`} type="submit">Delete Profile</button>
+          </form>
 
 
-        <h2>View Profile Page of {profileData.sname}</h2>
+        <h2>View Profile Page of {otherProfileData.sname}</h2>
         <h2>Identity</h2>
-        <p>Super Name: {profileData.sname}</p>
-        <p>Real Name: {profileData.rname}</p>
-        <p>Age: {profileData.age}</p>
-        <p>Location: {profileData.location}</p>
-        <p>Species: {profileData.species}</p>
-        <p>Gender: {profileData.gender}</p>
-        <p>Sexual Orientation: {profileData.sex}</p>
+        <p>Super Name: {otherProfileData.sname}</p>
+        <p>Real Name: {otherProfileData.rname}</p>
+        <p>Age: {otherProfileData.age}</p>
+        <p>Location: {otherProfileData.location}</p>
+        <p>Species: {otherProfileData.species}</p>
+        <p>Gender: {otherProfileData.gender}</p>
+        <p>Sexual Orientation: {otherProfileData.sex}</p>
         <h2>Attributes</h2>
-        <p>Abilities: {profileData.ability}</p>
-        <p>Side: {profileData.hva}</p>
-        <p>Affiliation: {profileData.tpi}</p>
+        <p>Abilities: {otherProfileData.ability}</p>
+        <p>Side: {otherProfileData.hva}</p>
+        <p>Affiliation: {otherProfileData.tpi}</p>
         <h2>Bio</h2>
-        <p>Backstory: {profileData.story}</p>
+        <p>Backstory: {otherProfileData.story}</p>
       </main>
     </>
   )

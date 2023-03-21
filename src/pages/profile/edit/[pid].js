@@ -14,7 +14,6 @@ export async function getServerSideProps(context) {
     }
   }
   
-  const pid = context.query.userId
   const userEmail = session.user.email;
 
   // CONNECT TO MONGODB DATABASE
@@ -22,7 +21,6 @@ export async function getServerSideProps(context) {
   const db = client.db(process.env.MONGODB_DB);
 
   // QUERY FOR SPECIFIC DATA
-  const user = db.collection("users").findOne({_id: pid});
   const profileData = await db.collection("profile").findOne({ userEmail });
 
   client.close();
@@ -128,9 +126,9 @@ export default function Edit({profileData}) {
               <label>Affiliation:</label>
               <select className="border-solid border-2 border-black" name="tpi" defaultValue={profileData.tpi}>
                 <option value="" disabled hidden>Team/Partner/Indie</option>
-                <option value="Team">I&#39;m on a team</option>
-                <option value="Partner">I have a partner</option>
-                <option value="Indie">I work independently</option>
+                <option value="I am on a team">I&#39;m on a team</option>
+                <option value="I have a partner">I have a partner</option>
+                <option value="I work independently">I work independently</option>
               </select>
             </section>
             <h3>Bio</h3>
