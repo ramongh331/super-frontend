@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     );
 
     client.close();
-    res.redirect('/profile/view/640fc57deb0adbd371de372e');
+    res.redirect(`/profile/view/${pID}`);
   } else {
     res.status(405).json({ message: 'Method not allowed' });
   }
