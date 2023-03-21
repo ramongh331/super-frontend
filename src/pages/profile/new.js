@@ -111,9 +111,9 @@ export default function New({ session }) {
               <label>Affiliation:</label>
               <select defaultValue={'DEFAULT'}className="border-solid border-2 border-black" name="tpi">
                 <option value="DEFAULT" disabled hidden>Team/Partner/Indie</option>
-                <option value="Team">I&#39;m on a team</option>
-                <option value="Partner">I have a partner</option>
-                <option value="Indie">I work independently</option>
+                <option value="I am on a team">I&#39;m on a team</option>
+                <option value="I have a partner">I have a partner</option>
+                <option value="I work independently">I work independently</option>
               </select>
             </section>
             <h3>Bio</h3>
