@@ -2,9 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { MongoClient } from "mongodb";
 import { getSession } from "next-auth/react";
+import { useState } from "react";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
+  const userEmail = session.user.email
 
 // tests to see if the user is signed in before rendering the page.
 if (!session) {
@@ -22,21 +24,29 @@ if (!session) {
 
   // get all profiles from profile collection in db
   const profiles = await db.collection("profile").find().toArray();
-  // const user = db.collection("users").findOne({_id: pid});
+  const findProfile = await db.collection("profile").findOne({userEmail});
 
   client.close();
 
   const serializedProfiles = JSON.parse(JSON.stringify(profiles));
+  const serializedfindProfile = JSON.parse(JSON.stringify(findProfile));
 
   return {
     props: {
+      findProfile: serializedfindProfile,
       profiles: serializedProfiles,
+      email: userEmail
     },
   };
 }
 
-export default function Connections({ profiles }) {
-    return (
+
+
+export default function Connections({ profiles, findProfile, email }) {
+  const [hasProfile, setHasProfile] = useState(findProfile?.userEmail === email ? 'hidden' : '')
+  
+  
+  return (
       <>
         <Head>
           <title>Create Next App</title>
@@ -45,6 +55,7 @@ export default function Connections({ profiles }) {
         </Head>
         <main>
           <h2>Connections/Super Matches Page</h2>
+          <Link href="/profile/new"><button className={`${hasProfile}`}>Set up Profile</button></Link>
           <section className="flex">
             {profiles.map((profile) => (
               <Link key={profile._id} href={`/profile/view/${profile._id}`}>
