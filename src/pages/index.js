@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { signIn, signOut, getSession } from "next-auth/react";
+import {motion } from "framer-motion"
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -40,9 +41,48 @@ export default function Home({ session}) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main>
-          <h2>Home Page</h2>
-          <button onClick={() => signIn('google', {callbackUrl: '/connections'})}>Sign In</button>
+        <header className="w-11/12 h-36 mx-auto flex items-center justify-between ">
+          <div className="flex items-center justify-between w-48">
+            <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
+            <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+            </div>
+            <section className="flex w-[55rem] justify-between text-xl">
+              <h2>Why Super?</h2>
+              <h2>How does it work?</h2>
+              <h2>Pricing</h2>
+              <h2>Contact</h2>
+            </section>
+            <section>
+              <button className="text-xl" onClick={() => signIn('google', {callbackUrl: '/connections'})}>Sign In</button>
+            </section>
+        </header>
+        <main className="w-full h-[66.7vh]">
+          <section className="w-fit mx-auto mt-5">
+            <h3 className="text-5xl">Join <span className="">Super</span> and...</h3>
+            <h3 className="text-8xl font-semibold">Find <span className="text-[#4478ff]">Your</span> Super <span className="text-[#4478ff]">Match</span></h3>
+          </section>
+           <section className="w-full h-full relative bg-blue-600" >
+            <motion.img 
+            src="https://i.imgur.com/e2W1m4a.png" className="w-[270px] object-contain absolute" alt="Wizard Card"
+            animate={{y: [28, -50, 28]}}
+            transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.9}}
+            />
+            <motion.img 
+            src="https://i.imgur.com/CR12UU1.png" className="w-[350px] object-contain absolute" alt="Sarg Card"
+            animate={{y: [28, -50, 28]}}
+            transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
+            />
+            <motion.img 
+            src="https://i.imgur.com/oDusOji.png" className="w-[283px] object-contain absolute right-[40%]" alt="Wonder Card"
+            animate={{y: [28, -50, 28]}}
+            transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.3}}
+            />
+            <motion.img 
+            src="https://i.imgur.com/Jd7P974.png" className="w-[390px] object-contain absolute right-[25%]" alt="Joker Card"
+            animate={{y: [28, -50, 28]}}
+            transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
+            />
+            </section>
         </main>
       </>
     );
