@@ -61,25 +61,25 @@ export default function Home({ session}) {
             <h3 className="text-5xl">Join <span className="">Super</span> and...</h3>
             <h3 className="text-8xl font-semibold">Find <span className="text-[#4478ff]">Your</span> Super <span className="text-[#4478ff]">Match</span></h3>
           </section>
-           <section className="w-full h-full relative bg-blue-600" >
+           <section className="w-full flex justify-evenly mt-10 relative" >
             <motion.img 
-            src="https://i.imgur.com/e2W1m4a.png" className="w-[270px] object-contain absolute" alt="Wizard Card"
+            src="https://i.imgur.com/KklYWBT.png" className="w-[290px] object-contain" alt="Wizard Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.9}}
             />
             <motion.img 
-            src="https://i.imgur.com/CR12UU1.png" className="w-[350px] object-contain absolute" alt="Sarg Card"
+            src="https://i.imgur.com/FykyQB3.png" className="w-[290px] object-contain" alt="Sarg Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
             />
             <motion.img 
-            src="https://i.imgur.com/oDusOji.png" className="w-[283px] object-contain absolute right-[40%]" alt="Wonder Card"
+            src="https://i.imgur.com/4ML1GiN.png" className="w-[290px] object-contain right-[40%]" alt="Wonder Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.3}}
             />
             <motion.img 
-            src="https://i.imgur.com/Jd7P974.png" className="w-[390px] object-contain absolute right-[25%]" alt="Joker Card"
-            animate={{y: [28, -50, 28]}}
+            src="https://i.imgur.com/Evhsjgw.png" className="w-[390px] object-contain right-[25%]" alt="Joker Card"
+            animate={{y: [32, -50, 32]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
             />
             </section>
