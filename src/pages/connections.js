@@ -70,7 +70,7 @@ export default function Connections({ profiles, findProfile, email }) {
               whileHover={{scale: 1.2}} 
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="text-xl font-semibold border-2 border-[#4478ff] rounded-md px-2" 
-              onClick={() => signOut('google', {callbackUrl: '/'})}>Sign Out</motion.button>
+              onClick={() => signOut({callbackUrl: '/'})}>Sign Out</motion.button>
             </section>
         </header>
         <main>
