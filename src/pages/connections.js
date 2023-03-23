@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MongoClient } from "mongodb";
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 import { useState } from "react";
 
 export async function getServerSideProps(context) {
