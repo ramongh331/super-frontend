@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { MongoClient } from "mongodb";
 import { getSession, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -73,27 +73,27 @@ export default function Connections({ profiles, findProfile, email }) {
               onClick={() => signOut({callbackUrl: '/'})}>Sign Out</motion.button>
             </section>
         </header>
-        <main>
+        <main className="w-full">
           <h3 className="">Connections/Super Matches Page</h3>
           <Link href="/profile/new"><button className={`${hasProfile} `}>Set up Profile</button></Link>
-          <section className="flex">
-            {profiles.map((profile) => (
-              <Link key={profile._id} href={`/profile/view/${profile._id}`}>
-                <section
-                  className="w-fit h-[26rem] text-2xl mx-6 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out"
-                >
-                  <img className="w-60 rounded-2xl " src="https://i.imgur.com/SXPej21.jpg" alt=""/>
-                  <section className="absolute bottom-0 w-full p-2">
-                    <h3 className="font-semibold text-lg">{profile.sname}</h3>
-                    <div className="flex justify-between text-base">
-                      <h4 >{profile.rname}</h4>
-                      <p >{profile.age}</p>
-                    </div>
-                    <p className="text-base">{profile.location}</p>
-                  </section>
-                </section>
-              </Link>
-            ))}
+          <section className="w-full flex flex-col items-center">
+              {profiles.map((profile) => (
+                <Link key={profile._id} href={`/profile/view/${profile._id}`}>
+                  <motion.section initial={{scale: 0}} whileInView={{scale: 1}} viewport={{once:true}}
+                   className="w-fit h-[40rem] text-2xl mb-20 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out"
+                  >
+                    <img className="w-96 rounded-2xl " src="https://i.imgur.com/SXPej21.jpg" alt=""/>
+                    <section className="absolute bottom-0 w-full p-2">
+                      <h3 className="font-semibold text-lg">{profile.sname}</h3>
+                      <div className="flex justify-between text-base">
+                        <h4 >{profile.rname}</h4>
+                        <p >{profile.age}</p>
+                      </div>
+                      <p className="text-base">{profile.location}</p>
+                    </section>
+                  </motion.section>
+                </Link>
+              ))}
           </section>
         </main>
       </>
