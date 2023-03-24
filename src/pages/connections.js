@@ -55,16 +55,12 @@ export default function Connections({ profiles, findProfile, email }) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <header className="w-11/12 h-28 mx-auto flex items-center justify-between ">
-          <div className="flex items-center justify-between w-48">
-            <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
-            <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
-            </div>
-            <section className="flex w-[55rem] justify-between text-xl">
-              <h2>Why Super?</h2>
-              <h2>How does it work?</h2>
-              <h2>Pricing</h2>
-              <h2>Contact</h2>
-            </section>
+          <Link href="/">
+            <div className="flex items-center justify-between w-48">
+              <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
+              <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+              </div>
+          </Link>
             <section>
               <motion.button 
               whileHover={{scale: 1.2}} 
@@ -82,13 +78,13 @@ export default function Connections({ profiles, findProfile, email }) {
                   <motion.section initial={{scale: 0}} whileInView={{scale: 1}} viewport={{once:true}}
                    className="w-fit h-[40rem] text-2xl mb-20 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out"
                   >
-                    <img className="w-96 rounded-2xl " src="https://i.imgur.com/SXPej21.jpg" alt=""/>
+                    <img className="w-96 rounded-2xl " src="https://i.imgur.com/SXPej21.jpg" alt="placeholder"/>
                     <section className="absolute bottom-0 w-full p-4">
-                      <h3 className="font-semibold text-3xl">{profile.sname}</h3>
-                      <div className="flex justify-between text-xl">
-                        <h4 >{profile.rname}</h4>
+                      <div className="flex justify-between font-semibold text-3xl">
+                        <h3 className="">{profile.sname}</h3>
                         <p >{profile.age}</p>
                       </div>
+                        <h4 className="text-xl">{profile.rname}</h4>
                       <p className="text-xl">{profile.location}</p>
                     </section>
                   </motion.section>
