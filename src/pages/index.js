@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { signIn, signOut, getSession } from "next-auth/react";
 import {motion } from "framer-motion"
 
@@ -24,10 +25,12 @@ export default function Home({ session}) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <header className="w-11/12 h-36 mx-auto flex items-center justify-between ">
-          <div className="flex items-center justify-between w-48">
-            <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
-            <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
-            </div>
+          <Link href="/">
+            <div className="flex items-center justify-between w-48">
+              <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
+              <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+              </div>
+          </Link>
             <section className="flex w-[55rem] justify-between text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
@@ -82,10 +85,12 @@ export default function Home({ session}) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <header className="w-11/12 h-36 mx-auto flex items-center justify-between ">
-          <div className="flex items-center justify-between w-48">
-            <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
-            <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
-            </div>
+          <Link href="/">
+            <div className="flex items-center justify-between w-48">
+              <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
+              <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+              </div>
+          </Link>
             <section className="flex w-[55rem] justify-between text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
