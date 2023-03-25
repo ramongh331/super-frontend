@@ -34,7 +34,9 @@ export default function Home({ session}) {
             <section className="flex w-[55rem] justify-between text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
-              <h2>Pricing</h2>
+              <Link href="/connections">
+                <h2 className="hover:underline">Connections</h2>
+              </Link>
               <h2>Contact</h2>
             </section>
             <section>
@@ -94,7 +96,6 @@ export default function Home({ session}) {
             <section className="flex w-[55rem] justify-between text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
-              <h2>Pricing</h2>
               <h2>Contact</h2>
             </section>
             <section>
