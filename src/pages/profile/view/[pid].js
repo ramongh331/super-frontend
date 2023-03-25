@@ -114,13 +114,13 @@ export default function View({ otherProfileData, pID, currentUserProfile }) {
       </header>
       <main className="w-full h-[92vh] bg-blue-200 flex">
         <section className="w-[40rem] h-[90%] bg-white mx-auto rounded-3xl mt-10 overflow-hidden shadow-[0_25px_40px_-20px_rgba(0,0,0,0.3)] shadow-black">
-          <section className="h-[30rem] overflow-hidden">
+          <section className="h-[60%] overflow-hidden">
             <img
               src="https://i.imgur.com/nXC08kY.jpg"
               alt="Super Profile Portrait"
             />
           </section>
-          <section className="w-full h-[36%] text-xl px-4 overflow-scroll overflow-x-hidden">
+          <section className="w-full h-[40%] text-xl px-4 overflow-scroll overflow-x-hidden">
             <div className="flex justify-between text-3xl font-semibold mt-4">
               <p>{otherProfileData.sname}</p>
               <p>{otherProfileData.age}</p>
