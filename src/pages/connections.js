@@ -94,7 +94,7 @@ export default function Connections({ profiles, findProfile, email }) {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
-                className="min-[320px]:w-72 sm:w-96 h-[40rem] text-2xl mb-20 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out bg-orange-300"
+                className="min-[320px]:w-72 sm:w-96 h-[40rem] text-2xl mb-20 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out"
               >
                 <img
                   className="w-full h-full object-cover absolute"
