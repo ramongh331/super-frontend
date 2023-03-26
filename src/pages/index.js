@@ -36,7 +36,7 @@ export default function Home({ session}) {
               </div>
           </Link>
             <section className="flex justify-between
-            sm:w-[23rem] md:w-[28rem] lg:w-[32rem] w-[55rem] 
+            sm:w-[23rem] md:w-[28rem] lg:w-[32rem] xl:w-[38rem] w-[55rem] 
             sm:text-xs md:text-sm lg:text-base text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
@@ -67,22 +67,22 @@ export default function Home({ session}) {
            sm:mt-16 lg:mt-18 mt-10 
            relative" >
             <motion.img 
-            src="https://i.imgur.com/KklYWBT.png" className="sm:w-[105px] lg:w-[150px] w-[290px] object-contain" alt="Wizard Card"
+            src="https://i.imgur.com/KklYWBT.png" className="sm:w-[105px] lg:w-[150px] xl:w-[200px] w-[290px] object-contain" alt="Wizard Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.9}}
             />
             <motion.img 
-            src="https://i.imgur.com/FykyQB3.png" className="sm:w-[105px] lg:w-[150px] w-[290px] object-contain" alt="Sarg Card"
+            src="https://i.imgur.com/FykyQB3.png" className="sm:w-[105px] lg:w-[150px] xl:w-[200px] w-[290px] object-contain" alt="Sarg Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
             />
             <motion.img 
-            src="https://i.imgur.com/4ML1GiN.png" className="sm:w-[105px] lg:w-[150px] w-[290px] object-contain right-[40%]" alt="Wonder Card"
+            src="https://i.imgur.com/4ML1GiN.png" className="sm:w-[105px] lg:w-[150px] xl:w-[200px] w-[290px] object-contain right-[40%]" alt="Wonder Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.3}}
             />
             <motion.img 
-            src="https://i.imgur.com/Evhsjgw.png" className="sm:w-[140px] lg:w-[195px] w-[390px] object-contain right-[25%]" alt="Joker Card"
+            src="https://i.imgur.com/Evhsjgw.png" className="sm:w-[140px] lg:w-[195px] xl:w-[265px] w-[390px] object-contain right-[25%]" alt="Joker Card"
             animate={{y: [32, -50, 32]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
             />
