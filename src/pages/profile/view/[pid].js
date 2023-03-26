@@ -69,14 +69,20 @@ export default function View({ otherProfileData, pID, currentUserProfile }) {
       <header className="w-full h-[8vh] mx-auto flex items-center justify-between relative">
         <Link href="/">
           <img
-            className="w-14 ml-12"
+            className="min-[320px]:w-10 sm:w-14 
+            min-[320px]:ml-5 sm:ml-12"
             src="https://i.imgur.com/0BIn6HA.png"
             alt="Super Logo"
           />
         </Link>
         <Link href="/connections">
           <motion.button
-            className="text-xl bg-[#4478ff] text-white font-semibold p-2 rounded-lg"
+            className="min-[320px]:text-xs sm:text-xl 
+            bg-[#4478ff] 
+            text-white 
+            font-semibold 
+            p-2 
+            rounded-lg"
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -85,7 +91,8 @@ export default function View({ otherProfileData, pID, currentUserProfile }) {
         </Link>
         <img
           onClick={handleMenu}
-          className="w-10 mr-16 hover:cursor-pointer"
+          className="min-[320px]:w-7 sm:w-10 
+          min-[320px]:mr-5 sm:mr-16 hover:cursor-pointer"
           src="https://i.imgur.com/P4oiyA3.png"
           alt="hamburger side menu"
         />
@@ -114,14 +121,14 @@ export default function View({ otherProfileData, pID, currentUserProfile }) {
       </header>
       <main className="w-full h-[92vh] bg-blue-200 flex">
         <section className="w-[40rem] h-[90%] bg-white mx-auto rounded-3xl mt-10 overflow-hidden shadow-[0_25px_40px_-20px_rgba(0,0,0,0.3)] shadow-black">
-          <section className="h-[60%] overflow-hidden">
+          <section className="min-[320px]:w-[40rem] sm:w-full h-[60%] overflow-hidden">
             <img
               src="https://i.imgur.com/nXC08kY.jpg"
               alt="Super Profile Portrait"
             />
           </section>
-          <section className="w-full h-[40%] text-xl px-4 overflow-scroll overflow-x-hidden">
-            <div className="flex justify-between text-3xl font-semibold mt-4">
+          <section className="w-full h-[40%] min-[320px]:text-base sm:text-xl px-4 overflow-scroll overflow-x-hidden">
+            <div className="flex justify-between min-[320px]:text-2xl sm:text-3xl font-semibold mt-4">
               <p>{otherProfileData.sname}</p>
               <p>{otherProfileData.age}</p>
             </div>
@@ -129,7 +136,7 @@ export default function View({ otherProfileData, pID, currentUserProfile }) {
               <p>{otherProfileData.rname}</p>
               <p>{otherProfileData.location}</p>
             </div>
-            <h2 className="text-2xl font-semibold text-center">Identity</h2>
+            <h2 className="min-[320px]:text-xl sm:text-2xl font-semibold text-center">Identity</h2>
             <div className="flex justify-between mt-4">
               <div className="text-center">
                 <h3 className="font-semibold">Gender</h3>
@@ -144,7 +151,7 @@ export default function View({ otherProfileData, pID, currentUserProfile }) {
                 <p>{otherProfileData.species}</p>
               </div>
             </div>
-            <h2 className="text-2xl font-semibold text-center mt-7">
+            <h2 className="min-[320px]:text-xl sm:text-2xl font-semibold text-center mt-7">
               Attributes
             </h2>
             <div className="mt-4">
