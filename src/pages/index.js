@@ -100,49 +100,66 @@ export default function Home({ session}) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <header className="w-11/12 h-36 mx-auto flex items-center justify-between ">
+        <header className="w-11/12 
+        min-[320px]:h-9 sm:h-20 2xl:h-32 h-36 
+        mx-auto 
+        flex items-center justify-between ">
           <Link href="/">
-            <div className="flex items-center justify-between w-48">
-              <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
-              <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+            <div className="flex items-center justify-between 
+            min-[320px]:w-14 sm:w-24 lg:w-36 2xl:w-44 w-48">
+              <img className="min-[320px]:w-5 sm:w-10 lg:w-14 2xl:w-16 w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
+              <h1 className="min-[320px]:text-[10px] sm:text-base lg:text-2xl 2xl:text-3xl text-4xl text-[#4478ff] font-bold">SUPER</h1>
               </div>
           </Link>
-            <section className="flex w-[55rem] justify-between text-xl">
+            <section className="flex justify-between
+            min-[320px]:w-[11rem] sm:w-[23rem] md:w-[28rem] lg:w-[32rem] xl:w-[38rem] 2xl:w-[45rem] w-[55rem] 
+            min-[320px]:text-[5px] sm:text-xs md:text-sm lg:text-base 2xl:text-xl text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
+              <Link href="/connections">
+                <h2 className="hover:underline">Connections</h2>
+              </Link>
               <h2>Contact</h2>
             </section>
             <section>
               <motion.button 
               whileHover={{scale: 1.2}} 
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="text-xl font-semibold border-2 border-[#4478ff] rounded-md px-2" 
+              className="min-[320px]:text-[5px] sm:text-xs md:text-sm lg:text-base 2xl:text-xl text-xl 
+              font-semibold 
+              min-[320px]:border-0 sm:border-[1px] lg:border-2 border-2 border-[#4478ff] 
+              rounded-md 
+              min-[320px]:px-[2px] sm:px-2 px-2"
               onClick={() => signIn('google', {callbackUrl: '/connections'})}>Sign In</motion.button>
             </section>
         </header>
         <main className="w-full h-[66.7vh]">
           <section className="w-fit mx-auto mt-5">
-            <h3 className="text-5xl">Join <span className="">Super</span> and...</h3>
-            <h3 className="text-8xl font-semibold">Find <span className="text-[#4478ff]">Your</span> Super <span className="text-[#4478ff]">Match</span></h3>
+            <h3 className="min-[320px]:text-base sm:text-2xl md:text-4xl lg:text-5xl 2xl:text-6xl text-5xl">Join <span className="">Super</span> and...</h3>
+            <h3 className="min-[320px]:text-3xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl text-8xl 
+            font-semibold">Find <span className="text-[#4478ff]">Your</span> Super <span className="text-[#4478ff]">Match</span></h3>
           </section>
-           <section className="w-full flex justify-evenly mt-10 relative" >
+           <section className="w-full 
+           flex justify-evenly 
+           min-[320px]:mt-14 sm:mt-16 lg:mt-18 2xl:mt-20 mt-10 
+           relative" >
             <motion.img 
-            src="https://i.imgur.com/KklYWBT.png" className="w-[290px] object-contain" alt="Wizard Card"
+            src="https://i.imgur.com/KklYWBT.png" className="min-[320px]:w-[55px] sm:w-[105px] lg:w-[150px] xl:w-[200px] 2xl:w-[250px] w-[290px] object-contain" alt="Wizard Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.9}}
             />
             <motion.img 
-            src="https://i.imgur.com/FykyQB3.png" className="w-[290px] object-contain" alt="Sarg Card"
+            src="https://i.imgur.com/FykyQB3.png" className="min-[320px]:w-[55px] sm:w-[105px] lg:w-[150px] xl:w-[200px] 2xl:w-[250px] w-[290px] object-contain" alt="Sarg Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
             />
             <motion.img 
-            src="https://i.imgur.com/4ML1GiN.png" className="w-[290px] object-contain right-[40%]" alt="Wonder Card"
+            src="https://i.imgur.com/4ML1GiN.png" className="min-[320px]:w-[55px] sm:w-[105px] lg:w-[150px] xl:w-[200px] 2xl:w-[250px] w-[290px] object-contain right-[40%]" alt="Wonder Card"
             animate={{y: [28, -50, 28]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.3}}
             />
             <motion.img 
-            src="https://i.imgur.com/Evhsjgw.png" className="w-[390px] object-contain right-[25%]" alt="Joker Card"
+            src="https://i.imgur.com/Evhsjgw.png" className="min-[320px]:w-[72px] sm:w-[140px] lg:w-[195px] xl:w-[265px] 2xl:w-[325px] w-[390px] object-contain right-[25%]" alt="Joker Card"
             animate={{y: [32, -50, 32]}}
             transition={{duration: 5, repeat: Infinity, ease: "easeInOut"}}
             />
