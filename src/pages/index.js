@@ -27,7 +27,7 @@ export default function Home({ session}) {
         <header className="sm:w-11/12 w-11/12 
         sm:h-20 h-36 
         mx-auto 
-        flex items-center justify-between">
+        flex items-center justify-between ">
           <Link href="/">
             <div className="flex items-center justify-between 
             sm:w-24 w-48">
@@ -36,8 +36,8 @@ export default function Home({ session}) {
               </div>
           </Link>
             <section className="flex justify-between
-            sm:w-[23rem] w-[55rem] 
-            sm:text-xs text-xl">
+            sm:w-[23rem] md:w-[28rem] w-[55rem] 
+            sm:text-xs md:text-sm text-xl">
               <h2>Why Super?</h2>
               <h2>How does it work?</h2>
               <Link href="/connections">
@@ -49,7 +49,7 @@ export default function Home({ session}) {
               <motion.button 
               whileHover={{scale: 1.2}} 
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="sm:text-xs text-xl 
+              className="sm:text-xs md:text-sm text-xl 
               font-semibold 
               sm:border-[1px] border-2 border-[#4478ff] 
               rounded-md 
@@ -59,8 +59,8 @@ export default function Home({ session}) {
         </header>
         <main className="w-full h-[66.7vh]">
           <section className="w-fit mx-auto mt-5">
-            <h3 className="sm:text-2xl text-5xl">Join <span className="">Super</span> and...</h3>
-            <h3 className="sm:text-6xl text-8xl font-semibold">Find <span className="text-[#4478ff]">Your</span> Super <span className="text-[#4478ff]">Match</span></h3>
+            <h3 className="sm:text-2xl md:text-4xl text-5xl">Join <span className="">Super</span> and...</h3>
+            <h3 className="sm:text-6xl md:text-7xl text-8xl font-semibold">Find <span className="text-[#4478ff]">Your</span> Super <span className="text-[#4478ff]">Match</span></h3>
           </section>
            <section className="w-full 
            flex justify-evenly 
