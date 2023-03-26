@@ -64,6 +64,11 @@ export default function Connections({ profiles, findProfile, email }) {
             <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
           </div>
         </Link>
+        <Link href="/profile/new">
+          <motion.button className={`${hasProfile} text-xl bg-[#4478ff] text-white font-semibold p-2 rounded-lg`}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }} >Set up Profile</motion.button>
+        </Link>
         <section>
           <motion.button
             whileHover={{ scale: 1.2 }}
@@ -77,9 +82,7 @@ export default function Connections({ profiles, findProfile, email }) {
       </header>
       <main className="w-full">
         <h3 className="text-center text-7xl mb-10">Connections</h3>
-        <Link href="/profile/new">
-          <button className={`${hasProfile} `}>Set up Profile</button>
-        </Link>
+        
         <section className="w-full flex flex-col items-center">
           {profiles.map((profile) => (
             <Link
