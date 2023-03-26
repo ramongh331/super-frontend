@@ -61,7 +61,7 @@ export default function Connections({ profiles, findProfile, email }) {
               src="https://i.imgur.com/0BIn6HA.png"
               alt="Super Logo"
             />
-            <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+            <h1 className="text-4xl text-[#4478ff] font-bold min-[320px]:hidden ">SUPER</h1>
           </div>
         </Link>
         <Link href="/profile/new">
@@ -81,7 +81,7 @@ export default function Connections({ profiles, findProfile, email }) {
         </section>
       </header>
       <main className="w-full">
-        <h3 className="text-center text-7xl mb-10">Connections</h3>
+        <h3 className="text-center min-[320px]:text-5xl sm:text-7xl mb-10">Connections</h3>
         
         <section className="w-full flex flex-col items-center">
           {profiles.map((profile) => (
@@ -94,7 +94,7 @@ export default function Connections({ profiles, findProfile, email }) {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
-                className="w-96 h-[40rem] text-2xl mb-20 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out bg-orange-300"
+                className="min-[320px]:w-72 sm:w-96 h-[40rem] text-2xl mb-20 relative overflow-hidden rounded-2xl hover:shadow-md hover:shadow-black hover:scale-105 transition ease-in-out bg-orange-300"
               >
                 <img
                   className="w-full h-full object-cover absolute"
