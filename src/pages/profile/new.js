@@ -36,7 +36,7 @@ export default function New({ session }) {
           <Link href="/">
             <div className="flex items-center justify-between w-48">
               <img className="w-16" src="https://i.imgur.com/0BIn6HA.png" alt="Super Logo"/>
-              <h1 className="text-4xl text-[#4478ff] font-bold">SUPER</h1>
+              <h1 className="text-4xl text-[#4478ff] font-bold min-[320px]:hidden">SUPER</h1>
               </div>
           </Link>
             <section>
@@ -51,41 +51,46 @@ export default function New({ session }) {
           <h2 className="text-center text-5xl py-10">Set up profile</h2>
 
           <form action="/api/create-action" method="POST" className="w-full h-full">
-            <section className="w-fit h-full mx-auto"> 
+            <section className="max-w-4xl h-full mx-auto"> 
               {/* Card 1 */}
               <motion.section initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} viewport={{once:true}} 
-              className="w-[60rem] h-[30rem] flex flex-col items-center justify-center bg-white rounded-3xl mb-72 shadow-lg">
-                <label className="text-3xl mb-2">Super Name</label>
-                <input className="border-solid border-2 border-black text-xl p-2 rounded-lg" type="text" name="sname" placeholder="Super Name" />
+              className="w-auto h-[30rem] flex flex-col items-center justify-center bg-white rounded-3xl mb-72 mx-4 shadow-lg">
+                <label className="min-[320px]:text-lg text-3xl mb-2">Super Name</label>
+                <input className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg" type="text" name="sname" placeholder="Super Name" />
               </motion.section>
               
               {/* Card 2 */}
               <motion.section initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} viewport={{once:true}}
-              className="w-[60rem] h-[30rem] flex items-center justify-evenly bg-white rounded-3xl mb-72 shadow-lg">
+              className="w-auto h-[30rem] 
+              min-[320px]:flex-col flex   
+              items-center justify-evenly bg-white rounded-3xl mb-72 mx-4 shadow-lg">
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Real Name</label>
-                  <input className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" type="text" name="rname" placeholder="Real Name" />
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Real Name</label>
+                  <input className="border-solid border-2 border-black 
+                  min-[320px]:text-base text-xl p-1 rounded-lg mb-4" type="text" name="rname" placeholder="Real Name" />
                 </section>
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Age</label>
-                  <input className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" type="number" min="0" name="age" placeholder="Age" />
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Age</label>
+                  <input className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" type="number" min="0" name="age" placeholder="Age" />
                 </section>
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Location</label>
-                  <input className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" type="text" name="location" placeholder="Location" />
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Location</label>
+                  <input className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" type="text" name="location" placeholder="Location" />
                 </section>
               </motion.section>
 
                 {/* Card 3 */}
               <motion.section initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} viewport={{once:true}} 
-              className="w-[60rem] h-[30rem] flex items-center justify-evenly bg-white rounded-3xl mb-72 shadow-lg">  
+              className="w-auto h-[30rem] 
+              min-[320px]:flex-col flex 
+              items-center justify-evenly bg-white rounded-3xl mb-72 mx-4 shadow-lg">  
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Species</label>
-                  <input className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" type="text" name="species" placeholder="Species" />
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Species</label>
+                  <input className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" type="text" name="species" placeholder="Species" />
                 </section>
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Gender (if human)</label>
-                  <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" name="gender">
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Gender (if human)</label>
+                  <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" name="gender">
                     <option value="DEFAULT" disabled hidden>Gender</option>
                     <option value="Agender">Agender</option>
                     <option value="Androgynous">Androgynous</option>
@@ -104,8 +109,8 @@ export default function New({ session }) {
                   </select>
                 </section>
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Sexual Orientation</label>
-                  <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" name="sex">
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Sexual Orientation</label>
+                  <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" name="sex">
                     <option value="DEFAULT" disabled hidden>Sexual Orientation</option>
                     <option value="Asexual">Asexual</option>
                     <option value="Bisexual">Bisexual</option>
@@ -122,17 +127,19 @@ export default function New({ session }) {
 
               {/* Card 4 */}
               <motion.section initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} viewport={{once:true}}
-              className="w-[60rem] h-[30rem] flex flex-col items-center justify-center bg-white rounded-3xl mb-72 shadow-lg">
-                <label className="text-3xl mb-2">Abilities</label>
-                <input className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" type="text" name="ability" placeholder="Abilities" />
+              className="w-auto h-[30rem] flex flex-col items-center justify-center bg-white rounded-3xl mb-72 mx-4 shadow-lg">
+                <label className="min-[320px]:text-lg text-3xl mb-2">Abilities</label>
+                <input className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" type="text" name="ability" placeholder="Abilities" />
               </motion.section>
               
               {/* Card 5 */}
               <motion.section initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} viewport={{once:true}}
-              className="w-[60rem] h-[30rem] flex items-center justify-evenly bg-white rounded-3xl mb-72 shadow-lg">
+              className="w-auto h-[30rem] 
+              min-[320px]:flex-col flex 
+              items-center justify-evenly bg-white rounded-3xl mb-72 mx-4 shadow-lg">
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Pick your side</label>
-                  <select  defaultValue={'DEFAULT'} className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" name="hva">
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Pick your side</label>
+                  <select  defaultValue={'DEFAULT'} className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" name="hva">
                     <option value="DEFAULT" disabled hidden>Select your Side</option>
                     <option value="Hero">Hero</option>
                     <option value="Villain">Villain</option>
@@ -140,8 +147,8 @@ export default function New({ session }) {
                   </select>
                 </section>
                 <section className="flex flex-col text-center">
-                  <label className="text-3xl mb-2">Affiliation</label>
-                  <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4" name="tpi">
+                  <label className="min-[320px]:text-lg text-3xl mb-2">Affiliation</label>
+                  <select defaultValue={'DEFAULT'} className="border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4" name="tpi">
                     <option value="DEFAULT" disabled hidden>Team/Partner/Indie</option>
                     <option value="I am on a team">I&#39;m on a team</option>
                     <option value="I have a partner">I have a partner</option>
@@ -153,10 +160,11 @@ export default function New({ session }) {
               {/* Card 6 */}
               <motion.section initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{duration: 1}} viewport={{once:true}}
               id="card6" 
-              className="w-[60rem] h-[30rem] flex flex-col items-center justify-center bg-white rounded-3xl shadow-lg">
-                <label className="text-3xl mb-2">Backstory</label>
+              className="w-auto h-[30rem] flex flex-col items-center justify-center bg-white rounded-3xl mx-4 shadow-lg">
+                <label className="min-[320px]:text-lg text-3xl mb-2">Backstory</label>
                 <textarea
-                className="border-solid border-2 border-black text-xl p-2 rounded-lg mb-4"
+                className="w-11/12
+                border-solid border-2 border-black min-[320px]:text-base text-xl p-1 rounded-lg mb-4"
                   name="story"
                   rows="4"
                   cols="50"
@@ -166,7 +174,7 @@ export default function New({ session }) {
               <motion.button 
               whileHover={{scale: 1.1}} 
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="w-52 p-2 rounded-lg font-semibold bg-[#4478ff] text-white text-xl" type="submit">Create Super Profile</motion.button>
+              className="w-52 p-2 rounded-lg font-semibold bg-[#4478ff] text-white min-[320px]:text-lg text-xl" type="submit">Create Super Profile</motion.button>
               </motion.section>
             </section>
             <div className="w-full h-72"></div>
