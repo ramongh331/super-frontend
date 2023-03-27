@@ -55,13 +55,12 @@ export default function Connections({ profiles, findProfile, email }) {
       </Head>
       <header className="w-11/12 h-28 mx-auto flex items-center justify-between ">
         <Link href="/">
-          <div className="flex items-center justify-between w-48">
+          <div className="flex items-center justify-between w-24">
             <img
               className="w-16"
               src="https://i.imgur.com/0BIn6HA.png"
               alt="Super Logo"
             />
-            <h1 className="text-4xl text-[#4478ff] font-bold min-[320px]:hidden ">SUPER</h1>
           </div>
         </Link>
         <Link href="/profile/new">
