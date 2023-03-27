@@ -34,7 +34,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       profileData: serializedData,
-      pID
+      pID,
     },
   };
 }
@@ -49,9 +49,9 @@ export default function Edit({ profileData, pID }) {
       </Head>
       <header className="w-11/12 h-[8vh] mx-auto flex items-center justify-between">
         <Link href="/">
-          <div className="flex items-center justify-between w-48">
+          <div className="flex items-center justify-between min-[320px]:w-10 md:w-48">
             <img
-              className="w-16"
+              className="min-[320px]:w-10 md:w-16"
               src="https://i.imgur.com/0BIn6HA.png"
               alt="Super Logo"
             />
@@ -59,32 +59,44 @@ export default function Edit({ profileData, pID }) {
         </Link>
         <Link href={`/profile/view/${pID}`}>
           <motion.button
-              whileHover={{scale: 1.1}}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="w-48 p-2 rounded-lg font-semibold bg-[#4478ff] text-white text-xl mx-auto" type="submit">
-                Cancel
-              </motion.button>
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="min-[320px]:w-24 md:w-48 
+              min-[320px]:p-1 md:p-2 
+              min-[320px]:text-base md:text-xl
+              rounded-lg font-semibold bg-[#4478ff] text-white  mx-auto"
+            type="submit"
+          >
+            Cancel
+          </motion.button>
         </Link>
         <section>
           <motion.button
             whileHover={{ scale: 1.2 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="text-xl font-semibold border-2 border-[#4478ff] rounded-md px-2"
+            className="min-[320px]:text-base md:text-xl font-semibold border-2 border-[#4478ff] rounded-md px-2"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
             Sign Out
           </motion.button>
         </section>
       </header>
-      <main className="w-full h-[92vh] flex justify-center items-center bg-blue-200">
-        <section className="w-[60rem] h-[90%] bg-white p-5 rounded-xl shadow-xl">
+      <main className="w-full min-[320px]:h-full md:h-[92vh] flex justify-center items-center bg-blue-200">
+        <section
+          className="min-[320px]:w-full md:w-[60rem] 
+        min-[320px]:h-full md:h-[90%] 
+        bg-white 
+        p-5 
+        min-[320px]:rounded-none md:rounded-xl 
+        min-[320px]:shadow-none md:shadow-xl"
+        >
           <h2 className="text-2xl font-semibold">Edit Profile</h2>
           <form
             action="/api/update-action"
             method="POST"
-            className="w-full h-full flex flex-col justify-evenly"
+            className="w-full h-full flex flex-col justify-evenly items-center"
           >
-            <section className="flex flex-col mx-auto">
+            <section className="flex flex-col mx-auto min-[320px]:mb-4 md:mb-0">
               <label className="mb-[2px]">Super Name</label>
               <input
                 className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -93,8 +105,13 @@ export default function Edit({ profileData, pID }) {
                 defaultValue={profileData.sname}
               />
             </section>
-            <section className="flex justify-evenly">
-              <section className="flex flex-col">
+            <section
+              className="min-[320px]:flex-col md:flex-row 
+            min-[320px]:items-center 
+            flex 
+            md:justify-evenly"
+            >
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Real Name</label>
                 <input
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -103,7 +120,7 @@ export default function Edit({ profileData, pID }) {
                   defaultValue={profileData.rname}
                 />
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Age</label>
                 <input
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -113,7 +130,7 @@ export default function Edit({ profileData, pID }) {
                   defaultValue={profileData.age}
                 />
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Location</label>
                 <input
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -123,8 +140,13 @@ export default function Edit({ profileData, pID }) {
                 />
               </section>
             </section>
-            <section className="flex justify-evenly">
-              <section className="flex flex-col">
+            <section
+              className="min-[320px]:flex-col md:flex-row 
+            min-[320px]:items-center 
+            flex 
+            md:justify-evenly"
+            >
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Species</label>
                 <input
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -133,10 +155,10 @@ export default function Edit({ profileData, pID }) {
                   defaultValue={profileData.species}
                 />
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Gender (if human)</label>
                 <select
-                 className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
+                  className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
                   name="gender"
                   defaultValue={profileData.gender}
                 >
@@ -159,7 +181,7 @@ export default function Edit({ profileData, pID }) {
                   <option value="Two-Spirit">Two-Spirit</option>
                 </select>
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Sexual Orientation</label>
                 <select
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -181,9 +203,8 @@ export default function Edit({ profileData, pID }) {
                 </select>
               </section>
             </section>
-            
 
-            <section className="flex flex-col mx-auto">
+            <section className="flex flex-col mx-auto min-[320px]:mb-4 md:mb-0">
               <label className="mb-[2px]">Abilities</label>
               <input
                 className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -192,8 +213,13 @@ export default function Edit({ profileData, pID }) {
                 defaultValue={profileData.ability}
               />
             </section>
-            <section className="flex justify-evenly">
-              <section className="flex flex-col">
+            <section
+              className="min-[320px]:flex-col md:flex-row 
+            min-[320px]:items-center 
+            flex 
+            md:justify-evenly"
+            >
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Side</label>
                 <select
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -208,7 +234,7 @@ export default function Edit({ profileData, pID }) {
                   <option value="Anti-Hero">Anti-Hero</option>
                 </select>
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col min-[320px]:mb-4 md:mb-0">
                 <label className="mb-[2px]">Affiliation</label>
                 <select
                   className="w-56 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
@@ -226,10 +252,10 @@ export default function Edit({ profileData, pID }) {
                 </select>
               </section>
             </section>
-            <section className="flex flex-col mx-auto">
+            <section className="flex flex-col mx-auto min-[320px]:mb-4 md:mb-0">
               <label className="mb-[2px]">Backstory</label>
               <textarea
-                className="w-96 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
+                className="min-[320px]:w-72 md:w-96 border-solid border-2 border-black bg-blue-100 rounded-md text-lg px-2"
                 name="story"
                 rows="4"
                 cols="50"
@@ -238,10 +264,12 @@ export default function Edit({ profileData, pID }) {
                 defaultValue={profileData.story}
               />
             </section>
-            <motion.button 
-            whileHover={{scale: 1.1}} 
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            className="w-52 p-2 rounded-lg font-semibold bg-[#4478ff] text-white text-xl mx-auto" type="submit">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="w-52 p-2 rounded-lg font-semibold bg-[#4478ff] text-white text-xl mx-auto"
+              type="submit"
+            >
               Save
             </motion.button>
           </form>
